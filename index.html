@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fritokid</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #000;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <img src=\"A_digital_illustration_features_\\"FritoKid,\\"_an_ant.png\"FritoKid,\"_an_ant.png" alt="Fritokid Image" id="fkimg" />
+
+  <script>
+    document.getElementById("fkimg").addEventListener("click", function (event) {
+      const clickedX = event.offsetX;
+      const clickedY = event.offsetY;
+
+      // Area where the text "Fritokid" appears on the generated image (approximate bounding box)
+      // Adjust if needed
+      const box = {
+        x1: 450,
+        y1: 350,
+        x2: 750,
+        y2: 520,
+      };
+
+      if (
+        clickedX >= box.x1 &&
+        clickedX <= box.x2 &&
+        clickedY >= box.y1 &&
+        clickedY <= box.y2
+      ) {
+        window.location.href = "mailto:thedude@fritokid.win";
+      }
+    });
+  </script>
+</body>
+</html>

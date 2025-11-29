@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fritokid</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -12,6 +14,7 @@
       display: flex;
       background: #000;
       overflow: hidden;
+      font-family: 'Poppins', sans-serif;
     }
 
     /* Sidebar */
@@ -31,18 +34,21 @@
     }
 
     .sidebar:hover {
-      width: 200px; /* expanded width */
+      width: 220px; /* expanded width */
     }
 
     .sidebar a {
       text-decoration: none;
       color: #fff;
-      padding: 10px 0;
+      padding: 15px 10px;
       width: 100%;
       text-align: center;
       transition: 0.3s;
       white-space: nowrap;
       overflow: hidden;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      font-size: 16px;
     }
 
     .sidebar a:hover {
@@ -69,49 +75,15 @@
     }
 
     .sidebar:hover ~ .main {
-      margin-left: 200px;
+      margin-left: 220px;
     }
 
     img {
       max-width: 100%;
       height: auto;
-      cursor: pointer;
     }
   </style>
 </head>
 <body>
   <div class="sidebar">
-    <a href="http://vpn.fritokid.win" target="_blank"><span>Control</span></a>
-    <a href="http://jellyfin.fritokid.win" target="_blank"><span>See</span></a>
-    <a href="http://abs.fritokid.win" target="_blank"><span>Hear</span></a>
-  </div>
-
-  <div class="main">
-    <img src="FritoKidSailed.png" alt="Fritokid Image" id="fkimg" />
-  </div>
-
-  <script>
-    document.getElementById("fkimg").addEventListener("click", function (event) {
-      const clickedX = event.offsetX;
-      const clickedY = event.offsetY;
-
-      // Area where the text "Fritokid" appears on the generated image (approximate bounding box)
-      const box = {
-        x1: 50,
-        y1: 38,
-        x2: 70,
-        y2: 46,
-      };
-
-      if (
-        clickedX >= box.x1 &&
-        clickedX <= box.x2 &&
-        clickedY >= box.y1 &&
-        clickedY <= box.y2
-      ) {
-        window.location.href = "mailto:thedude@fritokid.win";
-      }
-    });
-  </script>
-</body>
-</html>
+    <a href="http://vnc.fritokid.win" t

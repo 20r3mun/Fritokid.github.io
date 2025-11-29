@@ -8,12 +8,70 @@
     body {
       margin: 0;
       padding: 0;
+      height: 100vh;
+      display: flex;
+      background: #000;
+      overflow: hidden;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 60px; /* collapsed width */
+      height: 100%;
+      background-color: #111;
+      overflow-x: hidden;
+      transition: 0.3s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 20px;
+    }
+
+    .sidebar:hover {
+      width: 200px; /* expanded width */
+    }
+
+    .sidebar a {
+      text-decoration: none;
+      color: #fff;
+      padding: 10px 0;
+      width: 100%;
+      text-align: center;
+      transition: 0.3s;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .sidebar a:hover {
+      background-color: #575757;
+    }
+
+    .sidebar span {
+      display: none;
+      margin-left: 10px;
+    }
+
+    .sidebar:hover span {
+      display: inline;
+    }
+
+    /* Main content */
+    .main {
+      margin-left: 60px;
+      flex: 1;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      background: #000;
+      transition: margin-left 0.3s;
     }
+
+    .sidebar:hover ~ .main {
+      margin-left: 200px;
+    }
+
     img {
       max-width: 100%;
       height: auto;
@@ -22,7 +80,15 @@
   </style>
 </head>
 <body>
-  <img src="FritoKidSailed.png" alt="Fritokid Image" id="fkimg" />
+  <div class="sidebar">
+    <a href="http://vpn.fritokid.win" target="_blank"><span>Control</span></a>
+    <a href="http://jellyfin.fritokid.win" target="_blank"><span>See</span></a>
+    <a href="http://abs.fritokid.win" target="_blank"><span>Hear</span></a>
+  </div>
+
+  <div class="main">
+    <img src="FritoKidSailed.png" alt="Fritokid Image" id="fkimg" />
+  </div>
 
   <script>
     document.getElementById("fkimg").addEventListener("click", function (event) {
@@ -30,7 +96,6 @@
       const clickedY = event.offsetY;
 
       // Area where the text "Fritokid" appears on the generated image (approximate bounding box)
-      // Adjust if needed
       const box = {
         x1: 50,
         y1: 38,

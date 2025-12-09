@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Merry Xmas Felix!</title>
+<link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --code-bg: rgba(0,0,0,0.55);
+    --accent: #FFD700;
+    --text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+  }
+  html,body{
+    height:100%;
+    margin:0;
+    font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  }
+  body{
+    background: radial-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.35));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color: white;
+  }
+  .bg{
+    position:fixed;
+    inset:0;
+    background-image: url("minecraft-key-art-3840x2160-20204.jpg");
+    background-size: cover;
+    background-position: center center;
+    filter: saturate(105%) contrast(1.02);
+    z-index:0;
+  }
+  /* subtle dark overlay to ensure text legibility */
+  .overlay{
+    position:fixed;
+    inset:0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.45));
+    z-index:1;
+  }
+  .card{
+    position:relative;
+    z-index:2;
+    max-width:1000px;
+    width:calc(100% - 48px);
+    margin:24px;
+    text-align:center;
+    padding:44px 36px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+    border-radius:16px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+    backdrop-filter: blur(4px) saturate(120%);
+  }
+  h1{
+    margin:0 0 10px 0;
+    font-family: "Mountains of Christmas", "Poppins", sans-serif;
+    font-size: clamp(34px, 6vw, 72px);
+    color: #fff;
+    letter-spacing: 1px;
+    text-shadow: var(--text-shadow);
+  }
+  p.lead{
+    margin:0 0 26px 0;
+    font-size: clamp(16px, 2.2vw, 20px);
+    color: #f8f8f8;
+    opacity:0.95;
+    text-shadow: var(--text-shadow);
+  }
+  .code-box{
+    display:inline-flex;
+    align-items:center;
+    gap:14px;
+    background: var(--code-bg);
+    padding:14px 18px;
+    border-radius:12px;
+    border: 1px solid rgba(255,255,255,0.06);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.5) inset;
+  }
+  .code{
+    font-family: "Poppins", monospace;
+    font-weight:700;
+    font-size:20px;
+    color: var(--accent);
+    letter-spacing: 2px;
+  }
+  .btn{
+    appearance:none;
+    border:0;
+    background: rgba(255,255,255,0.07);
+    color:#fff;
+    padding:10px 12px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:600;
+    transition: transform .12s ease, background .12s;
+  }
+  .btn:hover{ transform: translateY(-2px); background: rgba(255,255,255,0.10); }
+  .actions{
+    margin-top:18px;
+    display:flex;
+    gap:12px;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+  .small{
+    font-size:13px;
+    opacity:0.9;
+    margin-top:12px;
+    color: #ddd;
+  }
+  @media (max-width:560px){
+    .card{ padding:26px 18px; border-radius:12px; }
+    .code{ font-size:18px; }
+  }
+</style>
+</head>
+<body>
+  <div class="bg" aria-hidden="true"></div>
+  <div class="overlay" aria-hidden="true"></div>
+
+  <main class="card" role="main">
+    <h1>Merry Xmas Felix!</h1>
+    <p class="lead">Your download code is</p>
+
+    <div class="code-box" role="region" aria-label="Download code">
+      <div id="code" class="code">XXXX-XXXX-XXXX</div>
+      <button id="copyBtn" class="btn" title="Copy code">Copy</button>
+      <button id="downloadBtn" class="btn" title="Download HTML">Download</button>
+    </div>
+
+    <div class="actions">
+      <button id="openBtn" class="btn">Use Code</button>
+    </div>
+
+    <div class="small">If you want the code changed, edit the HTML or tell me what code to show.</div>
+  </main>
+
+<script>
+  // Copy to clipboard
+  const copyBtn = document.getElementById('copyBtn');
+  const codeEl = document.getElementById('code');
+  copyBtn.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(codeEl.textContent.trim());
+      copyBtn.textContent = 'Copied!';
+      setTimeout(()=> copyBtn.textContent = 'Copy', 1800);
+    } catch(e){
+      alert('Could not copy — select the code and copy manually.');
+    }
+  });
+
+  // Open a fake "use code" action (replace with real destination if you want)
+  document.getElementById('openBtn').addEventListener('click', () => {
+    alert('Use this code on the download page: ' + codeEl.textContent.trim());
+  });
+
+  // Offer the HTML file as a download
+  document.getElementById('downloadBtn').addEventListener('click', () => {
+    const html = `<!doctype html>
+<html><head><meta charset="utf-8"><title>Merry Xmas Felix</title></head><body><p>Your code: ${codeEl.textContent.trim()}</p></body></html>`;
+    const blob = new Blob([html], {type: 'text/html'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'merry-xmas-felix-code.html';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  });
+</script>
+</body>
+</html>

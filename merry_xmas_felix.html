@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Merry Xmas Felix</title>
 
-<!-- Cool Font -->
-<link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&display=swap" rel="stylesheet">
+<!-- Christmas Font -->
+<link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&display=swap" rel="stylesheet">
 
 <style>
     body {
@@ -15,75 +15,81 @@
         background: url("minecraft_bg.jpg") center/cover no-repeat fixed;
         height: 100vh;
         display: flex;
-        flex-direction: column;
         justify-content: center;
         align-items: center;
-        text-align: center;
         font-family: Arial, sans-serif;
-        backdrop-filter: blur(3px);
+    }
+
+    .card {
+        background: rgba(0,0,0,0.55);
+        padding: 40px 60px;
+        border-radius: 20px;
+        text-align: center;
+        box-shadow: 0 0 25px rgba(0,0,0,0.8);
+        backdrop-filter: blur(4px);
     }
 
     h1 {
         font-family: "Mountains of Christmas", cursive;
-        font-size: 4rem;
+        font-size: 3.5rem;
         color: white;
-        text-shadow: 4px 4px 8px rgba(0,0,0,0.9);
-        margin-bottom: 40px;
+        margin-bottom: 25px;
+        text-shadow: 3px 3px 6px black;
+    }
+
+    .code-box {
+        background: rgba(255,255,255,0.15);
+        padding: 15px 25px;
+        border-radius: 10px;
+        color: #fff;
+        font-size: 1.4rem;
+        font-weight: bold;
+        letter-spacing: 2px;
+        margin-bottom: 25px;
+        border: 1px solid rgba(255,255,255,0.25);
     }
 
     .btn {
-        background: rgba(255,255,255,0.9);
-        padding: 14px 26px;
+        display: inline-block;
+        background: #ffffffdd;
+        padding: 12px 25px;
         border-radius: 10px;
-        margin: 10px;
+        margin: 8px;
         font-size: 18px;
         cursor: pointer;
-        transition: 0.2s;
         border: none;
+        transition: 0.2s;
         font-weight: bold;
     }
 
     .btn:hover {
+        transform: scale(1.06);
         background: white;
-        transform: scale(1.05);
     }
 
-    #codeBox {
-        margin-top: 20px;
-        padding: 10px;
-        background: rgba(0,0,0,0.6);
-        color: #0f0;
-        font-family: monospace;
-        border-radius: 10px;
-        width: 80%;
-        max-width: 700px;
-        text-align: left;
-        white-space: pre-wrap;
-        user-select: text;
-    }
 </style>
 </head>
 <body>
 
-<h1>Merry Xmax Felix!</h1>
+<div class="card">
+    <h1>Merry Xmax Felix!</h1>
 
-<!-- Buttons -->
-<a href="bob.html" target="_blank">
-    <button class="btn">How to Use</button>
-</a>
+    <div class="code-box">
+        JH4K2-9DK22-HS92K-AB229
+    </div>
 
-<button class="btn" onclick="copyCode()">Copy Code</button>
+    <a href="bob.html" target="_blank">
+        <button class="btn">How to Use</button>
+    </a>
 
-<!-- Code Box -->
-<div id="codeBox">
-Your Minecraft Code: <strong>JH4K2-9DK22-HS92K-AB229</strong>
+    <button class="btn" onclick="copyCode()">Copy Code</button>
 </div>
 
 <script>
 function copyCode() {
-    const text = document.getElementById("codeBox").innerText;
-    navigator.clipboard.writeText(text).then(() => {
-        alert("Code copied to clipboard!");
+    const code = "JH4K2-9DK22-HS92K-AB229";
+    navigator.clipboard.writeText(code).then(() => {
+        alert("Code copied!");
     });
 }
 </script>

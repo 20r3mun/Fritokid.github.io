@@ -76,26 +76,16 @@
     }
 
     /* Main content */
-    .main {
-      margin-left: 60px; /* initial sidebar width */
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: margin-left 0.3s;
-      z-index: 1;
-    }
-
-    .sidebar:hover ~ .main {
-      margin-left: 220px; /* expanded sidebar width */
-    }
-
 .main {
   position: fixed;
   inset: 0;
   background: url("FritoKidSailed.png") center center / cover no-repeat;
   z-index: 1;
 }
+
+    .sidebar:hover ~ .main {
+      margin-left: 220px; /* expanded sidebar width */
+    }
 
     .status-dot {
   width: 10px;

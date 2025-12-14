@@ -96,17 +96,61 @@
       height: auto;
       display: block;
     }
+    .status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: 10px;
+  background: gray;
+}
+
+.up {
+  background: #2ecc71;
+}
+
+.down {
+  background: #e74c3c;
+}
+
   </style>
 </head>
 <body>
   <div class="sidebar">
-    <a href="http://jellyfin.fritokid.win" target="_blank"><i class="fas fa-eye"></i><span>See</span></a>
-    <a href="http://abs.fritokid.win" target="_blank"><i class="fas fa-headphones"></i><span>Hear</span></a>
+<a href="http://jellyfin.fritokid.win" target="_blank" id="seeLink">
+  <i class="fas fa-eye"></i>
+  <span>See</span>
+  <div class="status-dot" id="seeStatus"></div>
+</a>
+
+<a href="http://abs.fritokid.win" target="_blank" id="hearLink">
+  <i class="fas fa-headphones"></i>
+  <span>Hear</span>
+  <div class="status-dot" id="hearStatus"></div>
+</a>
+
     <a href="mailto:thedude@fritokid.win"><i class="fas fa-comment-dots"></i><span>Talk</span></a>
   </div>
 
   <div class="main">
     <img src="FritoKidSailed.png" alt="Fritokid Image" />
   </div>
+  <script>
+function checkService(url, statusEl) {
+  fetch(url, { mode: "no-cors" })
+    .then(() => {
+      statusEl.classList.add("up");
+      statusEl.classList.remove("down");
+    })
+    .catch(() => {
+      statusEl.classList.add("down");
+      statusEl.classList.remove("up");
+    });
+}
+
+checkService("http://jellyfin.fritokid.win", document.getElementById("seeStatus"));
+checkService("http://abs.fritokid.win", document.getElementById("hearStatus"));
+</script>
+
 </body>
 </html>
